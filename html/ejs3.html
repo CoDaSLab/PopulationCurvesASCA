@@ -1,0 +1,685 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>EXAMPLES of NULL distributions and ASCA tables in "Power Curves in ASCA with</title><meta name="generator" content="MATLAB 9.1"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2024-02-26"><meta name="DC.source" content="ejs3.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>EXAMPLES of NULL distributions and ASCA tables in "Power Curves in ASCA with</h1><!--introduction--><p>Permutation Testing". Submitted to the Special Issue in honor of Prof. Age Smilde.</p><p>coded by: Jose Camacho Paez (<a href="mailto:josecamacho@ugr.es">josecamacho@ugr.es</a>) last modification: 26/Feb/2024</p><p>Copyright (C) 2024  University of Granada, Granada</p><p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p><p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</p><p>You should have received a copy of the GNU General Public License along with this program.  If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">NULL distributions and ASCA table from data simulated with seed = 1.</a></li><li><a href="#2">NULL distributions and ASCA table from data simulated with seed = 1.</a></li><li><a href="#3">NULL distributions and ASCA table from data simulated with seed = 1.</a></li><li><a href="#4">NULL distributions and ASCA table from data simulated with seed = 1.</a></li><li><a href="#5">NULL distributions and ASCA table from data simulated with seed = 1.</a></li></ul></div><h2 id="1">NULL distributions and ASCA table from data simulated with seed = 1.</h2><p>The design matrix F contains a full factorial design with four levels for A, three levels for B and four individuals in each cell of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.1*theta and kE = 1-theta, theta = 0, R = 1000, P = 200 and alpha = 0.05.</p><pre class="codeinput">clear
+close <span class="string">all</span>
+clc
+
+reps = 4;
+vars = 400;
+levels = {[1,2,3,4],[1,2,3],1:reps};
+theta = 0.5;
+k = [theta*[.1,.1,.1,.1], (1-theta)];
+
+F = create_design(levels,1);
+
+rng(1);
+
+<span class="keyword">for</span> f=1:2 <span class="comment">% main factors A and B</span>
+    Xf{f} = randn(length(levels{f}),vars);
+<span class="keyword">end</span>
+Xf{3} = randn(length(levels{1})*length(levels{3}),vars);<span class="comment">% C(A)</span>
+Xi = randn(length(levels{1})*length(levels{2}),vars); <span class="comment">% AB</span>
+Xe = randn(size(F,1),vars); <span class="comment">% E</span>
+
+<span class="comment">% normalize the matrices</span>
+<span class="keyword">for</span> f=1:3
+    Xf{f} = sqrt(size(Xf{f},1))*Xf{f}/norm(Xf{f},<span class="string">'fro'</span>);
+<span class="keyword">end</span>
+Xi = sqrt(size(Xi,1))*Xi/norm(Xi,<span class="string">'fro'</span>);
+Xe = sqrt(size(Xe,1))*Xe/norm(Xe,<span class="string">'fro'</span>);
+
+X = [];
+Xf1 = [];
+Xf2 = [];
+Xf3 = [];
+Xi1 = [];
+N = size(F,1);
+<span class="keyword">for</span> i = 1:N
+    Xf1(i,:) = Xf{1}(F(i,1),:);
+    Xf2(i,:) = Xf{2}(F(i,2),:);
+    Xf3(i,:) = Xf{3}(F(i,1)+(F(i,3)-1)*length(levels{1}),:);
+    Xi1(i,:) = Xi(F(i,1)+(F(i,2)-1)*length(levels{1}),:);
+<span class="keyword">end</span>
+
+X = k(1)*Xf1 + k(2)*Xf2 + k(3)*Xf3 + k(4)*Xi1 + k(5)*Xe;
+
+T = parglm_dist(X, F, {[1 2]},1,[],2,[],[],[],[1 3]);
+legend(<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C(A)'</span>,<span class="string">'AB'</span>)
+axis([0.8 1.2 0 200])
+saveas(gcf,<span class="string">'./Figures/Null3_0'</span>); saveas(gcf,<span class="string">'./Figures/Null3_0.eps'</span>,<span class="string">'epsc'</span>);
+
+T.Source(2:5) = {<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C(A)'</span>,<span class="string">'AB'</span>}
+table2latex(T,<span class="string">'./Figures/Table3_0.tex'</span>)
+</pre><pre class="codeoutput">T = 
+      Source        SumSq     PercSumSq    df    MeanSq       F        Pvalue 
+    ___________    _______    _________    __    _______    ______    ________
+    'Mean'         0.34652    2.7832        1    0.34652       NaN         NaN
+    'A'            0.86849    6.9757        3     0.2895    1.1096    0.006993
+    'B'              0.546    4.3855        2      0.273    1.0613     0.16484
+    'C(A)'          3.1529    25.324       12    0.26274    1.0522    0.024975
+    'AB'            1.5434    12.397        6    0.25724    1.0302     0.15984
+    'Residuals'     5.9928    48.134       24     0.2497       NaN         NaN
+    'Total'          12.45       100       48    0.25938       NaN         NaN
+</pre><img vspace="5" hspace="5" src="ejs3_01.png" alt=""> <h2 id="2">NULL distributions and ASCA table from data simulated with seed = 1.</h2><p>The design matrix F contains a full factorial design with four levels for A, three levels for B and four individuals in each cell of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.1*theta and kE = 1-theta, theta = 0, R = 1000, P = 200 and alpha = 0.05. The whole experiment is duplicated.</p><pre class="codeinput">clear
+close <span class="string">all</span>
+clc
+
+reps = 4;
+vars = 400;
+levels = {[1,2,3,4],[1,2,3],1:reps};
+theta = 0.5;
+k = [theta*[.1,.1,.1,.1], (1-theta)];
+
+F = create_design(levels,1);
+F = [F;F];
+
+rng(1);
+
+<span class="keyword">for</span> f=1:2 <span class="comment">% main factors A and B</span>
+    Xf{f} = randn(length(levels{f}),vars);
+<span class="keyword">end</span>
+Xf{3} = randn(length(levels{1})*length(levels{3}),vars);<span class="comment">% C(A)</span>
+Xi = randn(length(levels{1})*length(levels{2}),vars); <span class="comment">% AB</span>
+Xe = randn(size(F,1),vars); <span class="comment">% E</span>
+
+<span class="comment">% normalize the matrices</span>
+<span class="keyword">for</span> f=1:3
+    Xf{f} = sqrt(size(Xf{f},1))*Xf{f}/norm(Xf{f},<span class="string">'fro'</span>);
+<span class="keyword">end</span>
+Xi = sqrt(size(Xi,1))*Xi/norm(Xi,<span class="string">'fro'</span>);
+Xe = sqrt(size(Xe,1))*Xe/norm(Xe,<span class="string">'fro'</span>);
+
+X = [];
+Xf1 = [];
+Xf2 = [];
+Xf3 = [];
+Xi1 = [];
+N = size(F,1);
+<span class="keyword">for</span> i = 1:N
+    Xf1(i,:) = Xf{1}(F(i,1),:);
+    Xf2(i,:) = Xf{2}(F(i,2),:);
+    Xf3(i,:) = Xf{3}(F(i,1)+(F(i,3)-1)*length(levels{1}),:);
+    Xi1(i,:) = Xi(F(i,1)+(F(i,2)-1)*length(levels{1}),:);
+<span class="keyword">end</span>
+
+X = k(1)*Xf1 + k(2)*Xf2 + k(3)*Xf3 + k(4)*Xi1 + k(5)*Xe;
+
+T = parglm_dist(X, F, {[1 2]},1,[],2,[],[],[],[1 3]);
+legend(<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C(A)'</span>,<span class="string">'AB'</span>)
+axis([0.8 1.2 0 200])
+saveas(gcf,<span class="string">'./Figures/Null3_1'</span>); saveas(gcf,<span class="string">'./Figures/Null3_1.eps'</span>,<span class="string">'epsc'</span>);
+
+T.Source(2:5) = {<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C(A)'</span>,<span class="string">'AB'</span>}
+table2latex(T,<span class="string">'./Figures/Table3_1.tex'</span>)
+</pre><pre class="codeoutput">T = 
+      Source        SumSq     PercSumSq    df    MeanSq       F        Pvalue 
+    ___________    _______    _________    __    _______    ______    ________
+    'Mean'         0.43108    1.7257        1    0.43108       NaN         NaN
+    'A'            0.97207    3.8914        3    0.32402    1.1885    0.000999
+    'B'            0.69985    2.8017        2    0.34992    1.2888    0.000999
+    'C(A)'          3.2783    13.124       12    0.27319    1.0946    0.000999
+    'AB'            1.6291    6.5215        6    0.27151    1.0879    0.006993
+    'Residuals'     17.969    71.936       72    0.24957       NaN         NaN
+    'Total'          24.98       100       96    0.26021       NaN         NaN
+</pre><img vspace="5" hspace="5" src="ejs3_02.png" alt=""> <h2 id="3">NULL distributions and ASCA table from data simulated with seed = 1.</h2><p>The design matrix F contains a full factorial design with four levels for A, three levels for B and four individuals in each cell of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.1*theta and kE = 1-theta, theta = 0, R = 1000, P = 200 and alpha = 0.05. The number of levels of A, L_A, is duplicated.</p><pre class="codeinput">clear
+close <span class="string">all</span>
+clc
+
+reps = 4;
+vars = 400;
+levels = {1:8,[1,2,3],1:reps};
+theta = 0.5;
+k = [theta*[.1,.1,.1,.1], (1-theta)];
+
+F = create_design(levels,1);
+
+rng(1);
+
+<span class="keyword">for</span> f=1:2 <span class="comment">% main factors A and B</span>
+    Xf{f} = randn(length(levels{f}),vars);
+<span class="keyword">end</span>
+Xf{3} = randn(length(levels{1})*length(levels{3}),vars);<span class="comment">% C(A)</span>
+Xi = randn(length(levels{1})*length(levels{2}),vars); <span class="comment">% AB</span>
+Xe = randn(size(F,1),vars); <span class="comment">% E</span>
+
+<span class="comment">% normalize the matrices</span>
+<span class="keyword">for</span> f=1:3
+    Xf{f} = sqrt(size(Xf{f},1))*Xf{f}/norm(Xf{f},<span class="string">'fro'</span>);
+<span class="keyword">end</span>
+Xi = sqrt(size(Xi,1))*Xi/norm(Xi,<span class="string">'fro'</span>);
+Xe = sqrt(size(Xe,1))*Xe/norm(Xe,<span class="string">'fro'</span>);
+
+X = [];
+Xf1 = [];
+Xf2 = [];
+Xf3 = [];
+Xi1 = [];
+N = size(F,1);
+<span class="keyword">for</span> i = 1:N
+    Xf1(i,:) = Xf{1}(F(i,1),:);
+    Xf2(i,:) = Xf{2}(F(i,2),:);
+    Xf3(i,:) = Xf{3}(F(i,1)+(F(i,3)-1)*length(levels{1}),:);
+    Xi1(i,:) = Xi(F(i,1)+(F(i,2)-1)*length(levels{1}),:);
+<span class="keyword">end</span>
+
+X = k(1)*Xf1 + k(2)*Xf2 + k(3)*Xf3 + k(4)*Xi1 + k(5)*Xe;
+
+T = parglm_dist(X, F, {[1 2]},1,[],2,[],[],[],[1 3]);
+legend(<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C(A)'</span>,<span class="string">'AB'</span>)
+axis([0.8 1.2 0 200])
+saveas(gcf,<span class="string">'./Figures/Null3_2'</span>); saveas(gcf,<span class="string">'./Figures/Null3_2.eps'</span>,<span class="string">'epsc'</span>);
+
+T.Source(2:5) = {<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C(A)'</span>,<span class="string">'AB'</span>}
+table2latex(T,<span class="string">'./Figures/Table3_2.tex'</span>)
+</pre><pre class="codeoutput">T = 
+      Source        SumSq     PercSumSq    df    MeanSq       F        Pvalue 
+    ___________    _______    _________    __    _______    ______    ________
+    'Mean'         0.42013    1.6809        1    0.42013       NaN         NaN
+    'A'             2.0342    8.1388        7     0.2906    1.1314    0.000999
+    'B'             0.6513    2.6058        2    0.32565    1.2794    0.000999
+    'C(A)'          6.1968    24.793       24     0.2582    1.0219     0.12388
+    'AB'            3.5635    14.258       14    0.25454    1.0074     0.34965
+    'Residuals'     12.128    48.524       48    0.25267       NaN         NaN
+    'Total'         24.994       100       96    0.26035       NaN         NaN
+</pre><img vspace="5" hspace="5" src="ejs3_03.png" alt=""> <h2 id="4">NULL distributions and ASCA table from data simulated with seed = 1.</h2><p>The design matrix F contains a full factorial design with four levels for A, three levels for B and four individuals in each cell of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.1*theta and kE = 1-theta, theta = 0, R = 1000, P = 200 and alpha = 0.05. The number of levels of B, L_B, is duplicated.</p><pre class="codeinput">clear
+close <span class="string">all</span>
+clc
+
+reps = 4;
+vars = 400;
+levels = {[1,2,3,4],1:6,1:reps};
+theta = 0.5;
+k = [theta*[.1,.1,.1,.1], (1-theta)];
+
+F = create_design(levels,1);
+
+rng(1);
+
+<span class="keyword">for</span> f=1:2 <span class="comment">% main factors A and B</span>
+    Xf{f} = randn(length(levels{f}),vars);
+<span class="keyword">end</span>
+Xf{3} = randn(length(levels{1})*length(levels{3}),vars);<span class="comment">% C(A)</span>
+Xi = randn(length(levels{1})*length(levels{2}),vars); <span class="comment">% AB</span>
+Xe = randn(size(F,1),vars); <span class="comment">% E</span>
+
+<span class="comment">% normalize the matrices</span>
+<span class="keyword">for</span> f=1:3
+    Xf{f} = sqrt(size(Xf{f},1))*Xf{f}/norm(Xf{f},<span class="string">'fro'</span>);
+<span class="keyword">end</span>
+Xi = sqrt(size(Xi,1))*Xi/norm(Xi,<span class="string">'fro'</span>);
+Xe = sqrt(size(Xe,1))*Xe/norm(Xe,<span class="string">'fro'</span>);
+
+X = [];
+Xf1 = [];
+Xf2 = [];
+Xf3 = [];
+Xi1 = [];
+N = size(F,1);
+<span class="keyword">for</span> i = 1:N
+    Xf1(i,:) = Xf{1}(F(i,1),:);
+    Xf2(i,:) = Xf{2}(F(i,2),:);
+    Xf3(i,:) = Xf{3}(F(i,1)+(F(i,3)-1)*length(levels{1}),:);
+    Xi1(i,:) = Xi(F(i,1)+(F(i,2)-1)*length(levels{1}),:);
+<span class="keyword">end</span>
+
+X = k(1)*Xf1 + k(2)*Xf2 + k(3)*Xf3 + k(4)*Xi1 + k(5)*Xe;
+
+T = parglm_dist(X, F, {[1 2]},1,[],2,[],[],[],[1 3]);
+legend(<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C(A)'</span>,<span class="string">'AB'</span>)
+axis([0.8 1.2 0 200])
+saveas(gcf,<span class="string">'./Figures/Null3_3'</span>); saveas(gcf,<span class="string">'./Figures/Null3_3.eps'</span>,<span class="string">'epsc'</span>);
+
+T.Source(2:5) = {<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C(A)'</span>,<span class="string">'AB'</span>}
+table2latex(T,<span class="string">'./Figures/Table3_3.tex'</span>)
+</pre><pre class="codeoutput">T = 
+      Source        SumSq     PercSumSq    df    MeanSq       F        Pvalue 
+    ___________    _______    _________    __    _______    ______    ________
+    'Mean'         0.38426    1.5426        1    0.38426       NaN         NaN
+    'A'            0.98398    3.9501        3    0.32799    1.2495    0.000999
+    'B'             1.4733    5.9146        5    0.29467    1.1578    0.000999
+    'C(A)'          3.2698    13.126       12    0.27248    1.0913    0.000999
+    'AB'            3.8176    15.325       15    0.25451    1.0193     0.17383
+    'Residuals'     14.981    60.141       60    0.24969       NaN         NaN
+    'Total'          24.91       100       96    0.25948       NaN         NaN
+</pre><img vspace="5" hspace="5" src="ejs3_04.png" alt=""> <h2 id="5">NULL distributions and ASCA table from data simulated with seed = 1.</h2><p>The design matrix F contains a full factorial design with four levels for A, three levels for B and four individuals in each cell of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.1*theta and kE = 1-theta, theta = 0, R = 1000, P = 200 and alpha = 0.05. The number of replicates in C(A), r_{C(A)}, is triplicated.</p><pre class="codeinput">clear
+close <span class="string">all</span>
+clc
+
+reps = 8;
+vars = 400;
+levels = {[1,2,3,4],[1,2,3],1:reps};
+theta = 0.5;
+k = [theta*[.1,.1,.1,.1], (1-theta)];
+
+F = create_design(levels,1);
+
+rng(1);
+
+<span class="keyword">for</span> f=1:2 <span class="comment">% main factors A and B</span>
+    Xf{f} = randn(length(levels{f}),vars);
+<span class="keyword">end</span>
+Xf{3} = randn(length(levels{1})*length(levels{3}),vars);<span class="comment">% C(A)</span>
+Xi = randn(length(levels{1})*length(levels{2}),vars); <span class="comment">% AB</span>
+Xe = randn(size(F,1),vars); <span class="comment">% E</span>
+
+<span class="comment">% normalize the matrices</span>
+<span class="keyword">for</span> f=1:3
+    Xf{f} = sqrt(size(Xf{f},1))*Xf{f}/norm(Xf{f},<span class="string">'fro'</span>);
+<span class="keyword">end</span>
+Xi = sqrt(size(Xi,1))*Xi/norm(Xi,<span class="string">'fro'</span>);
+Xe = sqrt(size(Xe,1))*Xe/norm(Xe,<span class="string">'fro'</span>);
+
+X = [];
+Xf1 = [];
+Xf2 = [];
+Xf3 = [];
+Xi1 = [];
+N = size(F,1);
+<span class="keyword">for</span> i = 1:N
+    Xf1(i,:) = Xf{1}(F(i,1),:);
+    Xf2(i,:) = Xf{2}(F(i,2),:);
+    Xf3(i,:) = Xf{3}(F(i,1)+(F(i,3)-1)*length(levels{1}),:);
+    Xi1(i,:) = Xi(F(i,1)+(F(i,2)-1)*length(levels{1}),:);
+<span class="keyword">end</span>
+
+X = k(1)*Xf1 + k(2)*Xf2 + k(3)*Xf3 + k(4)*Xi1 + k(5)*Xe;
+
+T = parglm_dist(X, F, {[1 2]},1,[],2,[],[],[],[1 3]);
+legend(<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C(A)'</span>,<span class="string">'AB'</span>)
+axis([0.8 1.2 0 200])
+saveas(gcf,<span class="string">'./Figures/Null3_4'</span>); saveas(gcf,<span class="string">'./Figures/Null3_4.eps'</span>,<span class="string">'epsc'</span>);
+
+T.Source(2:5) = {<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C(A)'</span>,<span class="string">'AB'</span>}
+table2latex(T,<span class="string">'./Figures/Table3_4.tex'</span>)
+</pre><pre class="codeoutput">T = 
+      Source        SumSq     PercSumSq    df    MeanSq       F        Pvalue 
+    ___________    _______    _________    __    _______    ______    ________
+    'Mean'         0.41662    1.6705        1    0.41662       NaN         NaN
+    'A'             1.0153    4.0712        3    0.33845    1.3083    0.000999
+    'B'            0.66638     2.672        2    0.33319    1.2989    0.000999
+    'C(A)'          7.2566    29.097       28    0.25916    1.0333     0.01998
+    'AB'            1.5392    6.1716        6    0.25653    1.0228     0.21978
+    'Residuals'     14.045    56.318       56    0.25081       NaN         NaN
+    'Total'          24.94       100       96    0.25979       NaN         NaN
+</pre><img vspace="5" hspace="5" src="ejs3_05.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% EXAMPLES of NULL distributions and ASCA tables in "Power Curves in ASCA with 
+% Permutation Testing". Submitted to the Special Issue in honor of Prof. Age
+% Smilde.
+%
+% coded by: Jose Camacho Paez (josecamacho@ugr.es)
+% last modification: 26/Feb/2024
+%
+% Copyright (C) 2024  University of Granada, Granada
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+%% NULL distributions and ASCA table from data simulated with seed = 1. 
+% The design matrix F contains a full factorial design with 
+% four levels for A, three levels for B and four individuals in each cell 
+% of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.1*theta 
+% and kE = 1-theta, theta = 0, R = 1000, P = 200 and alpha = 0.05.
+
+clear
+close all
+clc
+
+reps = 4;
+vars = 400;
+levels = {[1,2,3,4],[1,2,3],1:reps};
+theta = 0.5;
+k = [theta*[.1,.1,.1,.1], (1-theta)]; 
+
+F = create_design(levels,1);
+
+rng(1);
+    
+for f=1:2 % main factors A and B
+    Xf{f} = randn(length(levels{f}),vars);
+end
+Xf{3} = randn(length(levels{1})*length(levels{3}),vars);% C(A)
+Xi = randn(length(levels{1})*length(levels{2}),vars); % AB
+Xe = randn(size(F,1),vars); % E
+
+% normalize the matrices
+for f=1:3
+    Xf{f} = sqrt(size(Xf{f},1))*Xf{f}/norm(Xf{f},'fro');
+end
+Xi = sqrt(size(Xi,1))*Xi/norm(Xi,'fro');
+Xe = sqrt(size(Xe,1))*Xe/norm(Xe,'fro');
+
+X = [];  
+Xf1 = [];
+Xf2 = [];
+Xf3 = [];
+Xi1 = [];
+N = size(F,1); 
+for i = 1:N     
+    Xf1(i,:) = Xf{1}(F(i,1),:);
+    Xf2(i,:) = Xf{2}(F(i,2),:);
+    Xf3(i,:) = Xf{3}(F(i,1)+(F(i,3)-1)*length(levels{1}),:);
+    Xi1(i,:) = Xi(F(i,1)+(F(i,2)-1)*length(levels{1}),:); 
+end
+
+X = k(1)*Xf1 + k(2)*Xf2 + k(3)*Xf3 + k(4)*Xi1 + k(5)*Xe; 
+
+T = parglm_dist(X, F, {[1 2]},1,[],2,[],[],[],[1 3]);
+legend('A','B','C(A)','AB')
+axis([0.8 1.2 0 200])
+saveas(gcf,'./Figures/Null3_0'); saveas(gcf,'./Figures/Null3_0.eps','epsc'); 
+
+T.Source(2:5) = {'A','B','C(A)','AB'} 
+table2latex(T,'./Figures/Table3_0.tex')
+
+%% NULL distributions and ASCA table from data simulated with seed = 1. 
+% The design matrix F contains a full factorial design with 
+% four levels for A, three levels for B and four individuals in each cell 
+% of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.1*theta 
+% and kE = 1-theta, theta = 0, R = 1000, P = 200 and alpha = 0.05. The 
+% whole experiment is duplicated.
+
+clear
+close all
+clc
+
+reps = 4;
+vars = 400;
+levels = {[1,2,3,4],[1,2,3],1:reps};
+theta = 0.5;
+k = [theta*[.1,.1,.1,.1], (1-theta)]; 
+
+F = create_design(levels,1);
+F = [F;F];
+
+rng(1);
+    
+for f=1:2 % main factors A and B
+    Xf{f} = randn(length(levels{f}),vars);
+end
+Xf{3} = randn(length(levels{1})*length(levels{3}),vars);% C(A)
+Xi = randn(length(levels{1})*length(levels{2}),vars); % AB
+Xe = randn(size(F,1),vars); % E
+
+% normalize the matrices
+for f=1:3
+    Xf{f} = sqrt(size(Xf{f},1))*Xf{f}/norm(Xf{f},'fro');
+end
+Xi = sqrt(size(Xi,1))*Xi/norm(Xi,'fro');
+Xe = sqrt(size(Xe,1))*Xe/norm(Xe,'fro');
+
+X = [];  
+Xf1 = [];
+Xf2 = [];
+Xf3 = [];
+Xi1 = [];
+N = size(F,1); 
+for i = 1:N     
+    Xf1(i,:) = Xf{1}(F(i,1),:);
+    Xf2(i,:) = Xf{2}(F(i,2),:);
+    Xf3(i,:) = Xf{3}(F(i,1)+(F(i,3)-1)*length(levels{1}),:);
+    Xi1(i,:) = Xi(F(i,1)+(F(i,2)-1)*length(levels{1}),:); 
+end
+
+X = k(1)*Xf1 + k(2)*Xf2 + k(3)*Xf3 + k(4)*Xi1 + k(5)*Xe; 
+
+T = parglm_dist(X, F, {[1 2]},1,[],2,[],[],[],[1 3]);
+legend('A','B','C(A)','AB')
+axis([0.8 1.2 0 200])
+saveas(gcf,'./Figures/Null3_1'); saveas(gcf,'./Figures/Null3_1.eps','epsc'); 
+
+T.Source(2:5) = {'A','B','C(A)','AB'} 
+table2latex(T,'./Figures/Table3_1.tex')
+
+%% NULL distributions and ASCA table from data simulated with seed = 1. 
+% The design matrix F contains a full factorial design with 
+% four levels for A, three levels for B and four individuals in each cell 
+% of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.1*theta 
+% and kE = 1-theta, theta = 0, R = 1000, P = 200 and alpha = 0.05. The 
+% number of levels of A, L_A, is duplicated.
+
+clear
+close all
+clc
+
+reps = 4;
+vars = 400;
+levels = {1:8,[1,2,3],1:reps};
+theta = 0.5;
+k = [theta*[.1,.1,.1,.1], (1-theta)]; 
+
+F = create_design(levels,1);
+
+rng(1);
+    
+for f=1:2 % main factors A and B
+    Xf{f} = randn(length(levels{f}),vars);
+end
+Xf{3} = randn(length(levels{1})*length(levels{3}),vars);% C(A)
+Xi = randn(length(levels{1})*length(levels{2}),vars); % AB
+Xe = randn(size(F,1),vars); % E
+
+% normalize the matrices
+for f=1:3
+    Xf{f} = sqrt(size(Xf{f},1))*Xf{f}/norm(Xf{f},'fro');
+end
+Xi = sqrt(size(Xi,1))*Xi/norm(Xi,'fro');
+Xe = sqrt(size(Xe,1))*Xe/norm(Xe,'fro');
+
+X = [];  
+Xf1 = [];
+Xf2 = [];
+Xf3 = [];
+Xi1 = [];
+N = size(F,1); 
+for i = 1:N     
+    Xf1(i,:) = Xf{1}(F(i,1),:);
+    Xf2(i,:) = Xf{2}(F(i,2),:);
+    Xf3(i,:) = Xf{3}(F(i,1)+(F(i,3)-1)*length(levels{1}),:);
+    Xi1(i,:) = Xi(F(i,1)+(F(i,2)-1)*length(levels{1}),:); 
+end
+
+X = k(1)*Xf1 + k(2)*Xf2 + k(3)*Xf3 + k(4)*Xi1 + k(5)*Xe; 
+
+T = parglm_dist(X, F, {[1 2]},1,[],2,[],[],[],[1 3]);
+legend('A','B','C(A)','AB')
+axis([0.8 1.2 0 200])
+saveas(gcf,'./Figures/Null3_2'); saveas(gcf,'./Figures/Null3_2.eps','epsc'); 
+
+T.Source(2:5) = {'A','B','C(A)','AB'} 
+table2latex(T,'./Figures/Table3_2.tex')
+
+%% NULL distributions and ASCA table from data simulated with seed = 1. 
+% The design matrix F contains a full factorial design with 
+% four levels for A, three levels for B and four individuals in each cell 
+% of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.1*theta 
+% and kE = 1-theta, theta = 0, R = 1000, P = 200 and alpha = 0.05. The 
+% number of levels of B, L_B, is duplicated.
+
+clear
+close all
+clc
+
+reps = 4;
+vars = 400;
+levels = {[1,2,3,4],1:6,1:reps};
+theta = 0.5;
+k = [theta*[.1,.1,.1,.1], (1-theta)]; 
+
+F = create_design(levels,1);
+
+rng(1);
+    
+for f=1:2 % main factors A and B
+    Xf{f} = randn(length(levels{f}),vars);
+end
+Xf{3} = randn(length(levels{1})*length(levels{3}),vars);% C(A)
+Xi = randn(length(levels{1})*length(levels{2}),vars); % AB
+Xe = randn(size(F,1),vars); % E
+
+% normalize the matrices
+for f=1:3
+    Xf{f} = sqrt(size(Xf{f},1))*Xf{f}/norm(Xf{f},'fro');
+end
+Xi = sqrt(size(Xi,1))*Xi/norm(Xi,'fro');
+Xe = sqrt(size(Xe,1))*Xe/norm(Xe,'fro');
+
+X = [];  
+Xf1 = [];
+Xf2 = [];
+Xf3 = [];
+Xi1 = [];
+N = size(F,1); 
+for i = 1:N     
+    Xf1(i,:) = Xf{1}(F(i,1),:);
+    Xf2(i,:) = Xf{2}(F(i,2),:);
+    Xf3(i,:) = Xf{3}(F(i,1)+(F(i,3)-1)*length(levels{1}),:);
+    Xi1(i,:) = Xi(F(i,1)+(F(i,2)-1)*length(levels{1}),:); 
+end
+
+X = k(1)*Xf1 + k(2)*Xf2 + k(3)*Xf3 + k(4)*Xi1 + k(5)*Xe; 
+
+T = parglm_dist(X, F, {[1 2]},1,[],2,[],[],[],[1 3]);
+legend('A','B','C(A)','AB')
+axis([0.8 1.2 0 200])
+saveas(gcf,'./Figures/Null3_3'); saveas(gcf,'./Figures/Null3_3.eps','epsc'); 
+
+T.Source(2:5) = {'A','B','C(A)','AB'} 
+table2latex(T,'./Figures/Table3_3.tex')
+
+%% NULL distributions and ASCA table from data simulated with seed = 1. 
+% The design matrix F contains a full factorial design with 
+% four levels for A, three levels for B and four individuals in each cell 
+% of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.1*theta 
+% and kE = 1-theta, theta = 0, R = 1000, P = 200 and alpha = 0.05. The 
+% number of replicates in C(A), r_{C(A)}, is triplicated.
+
+clear
+close all
+clc
+
+reps = 8;
+vars = 400;
+levels = {[1,2,3,4],[1,2,3],1:reps};
+theta = 0.5;
+k = [theta*[.1,.1,.1,.1], (1-theta)]; 
+
+F = create_design(levels,1);
+
+rng(1);
+    
+for f=1:2 % main factors A and B
+    Xf{f} = randn(length(levels{f}),vars);
+end
+Xf{3} = randn(length(levels{1})*length(levels{3}),vars);% C(A)
+Xi = randn(length(levels{1})*length(levels{2}),vars); % AB
+Xe = randn(size(F,1),vars); % E
+
+% normalize the matrices
+for f=1:3
+    Xf{f} = sqrt(size(Xf{f},1))*Xf{f}/norm(Xf{f},'fro');
+end
+Xi = sqrt(size(Xi,1))*Xi/norm(Xi,'fro');
+Xe = sqrt(size(Xe,1))*Xe/norm(Xe,'fro');
+
+X = [];  
+Xf1 = [];
+Xf2 = [];
+Xf3 = [];
+Xi1 = [];
+N = size(F,1); 
+for i = 1:N     
+    Xf1(i,:) = Xf{1}(F(i,1),:);
+    Xf2(i,:) = Xf{2}(F(i,2),:);
+    Xf3(i,:) = Xf{3}(F(i,1)+(F(i,3)-1)*length(levels{1}),:);
+    Xi1(i,:) = Xi(F(i,1)+(F(i,2)-1)*length(levels{1}),:); 
+end
+
+X = k(1)*Xf1 + k(2)*Xf2 + k(3)*Xf3 + k(4)*Xi1 + k(5)*Xe; 
+
+T = parglm_dist(X, F, {[1 2]},1,[],2,[],[],[],[1 3]);
+legend('A','B','C(A)','AB')
+axis([0.8 1.2 0 200])
+saveas(gcf,'./Figures/Null3_4'); saveas(gcf,'./Figures/Null3_4.eps','epsc'); 
+
+T.Source(2:5) = {'A','B','C(A)','AB'} 
+table2latex(T,'./Figures/Table3_4.tex')
+
+##### SOURCE END #####
+--></body></html>
