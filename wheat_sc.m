@@ -5,6 +5,7 @@
 % Make sure MEDA-Toolbox v1.4 is on the path
 
 close all
+clear all
 load wheat
 
 ut = unique(treatment);
@@ -54,10 +55,30 @@ T.Source{4} = 'Treatment-3';
 
 disp(T)
 
+M = size(X,2);
+
+Xs.N = size(X,1);
+Xs.M = size(X,2);
+Xs.k = [std(parglmo.factors{1}.matrix,0,'all')/sqrt(M),...
+    std(parglmo.factors{2}.matrix,0,'all')/sqrt(M),...
+    std(parglmo.factors{3}.matrix,0,'all')/sqrt(M),...
+    std(parglmo.interactions{1}.matrix,0,'all')/sqrt(M),...
+    std(parglmo.interactions{2}.matrix,0,'all')/sqrt(M),...
+    std(parglmo.interactions{3}.matrix,0,'all')/sqrt(M)];
+
+
+[PCmean,PCrep,struct] = powercurve(Xs,F,{[1 2],[1,3],[2,3]},2,1000,[],@()1,[],.05,1,200,1,[],[],[]);  
+legend('Time-1','Trait-2','Treat-3','1-2','1-3','2-3')
+title('Absolute Sample Curves, 5-Replicate')
+
 %% ASCA model: Single replicate experimental matrix
 [B, ia, ic] = unique(F,'rows','stable');
 
-[T2, parglmo] = parglm(X(ia,:),F(ia,:), 'interaction',1);
+Xc = X(ia,:);
+Fc = F(ia,:);
+M = size(Xc,2);
+
+[T2, parglmo] = parglm(Xc,Fc,'interaction',1);
 
 T2.Source{2} = 'Time-1';
 T2.Source{3} = 'Trait-2';
@@ -65,10 +86,22 @@ T2.Source{4} = 'Treatment-3';
 
 disp(T2)
 
-[PCmean,PCrep,struct] = powercurve(X(ia,:),F(ia,:),{[1 2],[1,3],[2,3]},2,1000,[],@()1,[],.05,1,200,1,[],[],[]);  
-legend('Time-1','Trait-2','Treat-3','1-2','1-3','2-3')
-title('Relative Sample Curves, 1-Replicate')
 
-[PCmean,PCrep,struct] = powercurve(X,F,{[1 2],[1,3],[2,3]},2,1000,[],@()1,[],.05,1,200,1,[],[],[]);  
+
+
+Xs.N = size(X,1);
+Xs.M = M;
+Xs.k = [std(parglmo.factors{1}.matrix,0,'all')/sqrt(M),...
+    std(parglmo.factors{2}.matrix,0,'all')/sqrt(M),...
+    std(parglmo.factors{3}.matrix,0,'all')/sqrt(M),...
+    std(parglmo.interactions{1}.matrix,0,'all')/sqrt(M),...
+    std(parglmo.interactions{2}.matrix,0,'all')/sqrt(M),...
+    std(parglmo.interactions{3}.matrix,0,'all')/sqrt(M)];
+
+
+[PCmean,PCrep,struct] = powercurve(Xs,Fc,{[1 2],[1,3],[2,3]},2,1000,[],@()1,[],.05,1,200,1,[],[],[]);  
 legend('Time-1','Trait-2','Treat-3','1-2','1-3','2-3')
-title('Relative Sample Curves, 5-Replicate')
+title('Absolute Sample Curves, 1-Replicate')
+
+
+
