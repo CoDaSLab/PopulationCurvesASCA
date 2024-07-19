@@ -238,12 +238,12 @@ save ej1_9
 
 theta = 0:0.1:0.9;
 
-EFA = 6*(1 + 0.19*(theta).^2)./(4*(1+0.03*(theta).^2) + 2*(1+0.04*(theta).^2));
-EFB = 1 + (0.16*theta.^2)./(1 + 0.04*theta.^2);
-EFCA = 1 + (0.03*theta.^2);
-EFAB = 1 + (0.04*theta.^2); 
+EFA = 6*(1 + 0.76*(theta).^2)./(4*(1+0.12*(theta).^2) + 2*(1+0.16*(theta).^2));
+EFB = 1 + (0.64*theta.^2)./(1 + 0.16*theta.^2);
+EFCA = 1 + (0.12*theta.^2);
+EFAB = 1 + (0.16*theta.^2); 
 
-EFA2 = 6*(1 + 0.07*(theta).^2)./(4*(1+0.03*(theta).^2) + 2*(1+0.04*(theta).^2));
+EFA2 = 6*(1 + 0.28*(theta).^2)./(4*(1+0.12*(theta).^2) + 2*(1+0.16*(theta).^2));
 EFB2 = ones(size(theta));
 
 comb = [EFA' EFB' EFCA' EFAB' EFA2' EFB2'];
