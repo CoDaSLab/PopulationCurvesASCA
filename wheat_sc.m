@@ -86,6 +86,8 @@ Ts.Source{5} = 'Int-AB';
 
 disp(Ts)
 
+table2latex(Ts,'./Figures/TableW_3.tex')
+
 MSA = Ts{2,5};
 MSB = Ts{3,5};
 MSCA = Ts{4,5};
@@ -108,6 +110,7 @@ Xs.k = [sqrt(max(MSA+MSE-MSAB-MSCA,0)/(MSE*5*5)),...
 legend('Treatment-A','Time-B','Individual-C(A)','Int-AB') 
 saveas(gcf,'./Figures/APCW'); saveas(gcf,'./Figures/APCW.eps','epsc'); 
 
+
 %% ASCA model: Full experimental matrix
 
 [T, parglmo] = parglm(X, F, 'interaction', 1, [], 2, [], [], [], [1 3]);
@@ -118,3 +121,5 @@ T.Source{4} = 'Individual-C(A)';
 T.Source{5} = 'Int-AB';
 
 disp(T)
+
+table2latex(T,'./Figures/TableW_15.tex')
