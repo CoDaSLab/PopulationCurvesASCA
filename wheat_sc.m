@@ -35,6 +35,8 @@ for i=1:length(trait)
         end
     end
 end
+ind = find(ytra~=3);
+ytra(find(ytra==4)) = 3;
 
 ut = unique(treatment);
 for i=1:length(treatment)
@@ -44,7 +46,7 @@ for i=1:length(treatment)
         end
     end
 end
-ytre = ytre(find(ytra~=3))';
+ytre = ytre(ind)';
 
 ut = unique(time);
 for i=1:length(time)
@@ -54,26 +56,26 @@ for i=1:length(time)
         end
     end
 end
-ytim = ytim(find(ytra~=3))';
+ytim = ytim(ind)';
 
 ut = unique(replicate);
 for i=1:length(replicate)
     for j=1:length(ut)
         if strcmp(replicate{i},ut(j))
-            yrep(i)=j+5*(ytra(i)-1);
+            yrep(i)=ytra(i)+3*(j-1);
         end
     end
 end
-yrep = yrep(find(ytra~=3))';
+yrep = yrep(ind)';
 
-X = X(find(ytra~=3),:);
+X = X(ind,:);
 F = [ytre ytim yrep];
 
 
 %% ASCA model: Single replicate experimental matrix
 
-Xc = X(find(yrep==1 | yrep==6 | yrep==16),:);
-Fc = F(find(yrep==1 | yrep==6 | yrep==16),:);
+Xc = X(find(yrep<=3),:);
+Fc = F(find(yrep<=3),:);
 
 [Ts, parglmo] = parglm(Xc, Fc, 'interaction', 1, [], 2, [], [], [], [1 3]);
  
@@ -95,18 +97,16 @@ MSE = Ts{6,5};
 
 Xs.N = size(Xc,1);
 Xs.M = size(Xc,2);
-Xs.k = [sqrt(max(MSA+MSE-MSAB-MSCA,0)/(5*5)),...
-        sqrt(max(MSB-MSAB,0)/(2*5)),...
-        sqrt(max(MSCA-MSE,0)/5),...
-        sqrt(max(MSAB-MSE,0)/5),...
-        sqrt(MSE)];
+Xs.k = [sqrt(max(MSA+MSE-MSAB-MSCA,0)/(MSE*5*5)),...
+        sqrt(max(MSB-MSAB,0)/(MSE*2*5)),...
+        sqrt(max(MSCA-MSE,0)/(MSE*5)),...
+        sqrt(max(MSAB-MSE,0)/(MSE*5))];
     
 
-[PCmean,PCrep,struct] = powercurve(Xs,Fc, 'interaction', 2, [], [], @()1, 1:15, [], 1, [], 2, [], [], [], [1,3], 3);  
+[PCmean,PCrep,struct] = powercurve(Xs,Fc, 'interaction', 2, [], [], @()1, 2:3, .05, 1, 200, 2, [], [], [], [1,3], 3);  
 
 legend('Treatment-A','Time-B','Individual-C(A)','Int-AB') 
 saveas(gcf,'./Figures/APCW'); saveas(gcf,'./Figures/APCW.eps','epsc'); 
-
 
 %% ASCA model: Full experimental matrix
 
