@@ -4,7 +4,7 @@
 %
 % coded by: Jose Camacho Paez (josecamacho@ugr.es)
 %       Michael Sorochan Armstorng (mdarmstr@ugr.es)
-% last modification: 23/Feb/2024
+% last modification: 19/Jul/2024
 %
 % Copyright (C) 2024  University of Granada, Granada
 % 
@@ -24,7 +24,7 @@
 %% Absolute Population Curves (type 2) from variance coefficients. The design 
 % matrix F contains a full factorial design with four levels for A, three 
 % levels for B and four individuals in each cell of C(A). Other inputs are 
-% M = 400, kA = kB = kC(A) = kAB = 0.1*theta and kE = 1-theta, theta = 0, 
+% M = 400, kA = kB = kC(A) = kAB = 0.2*theta and kE = 1, theta = 0.5, 
 % R = 1000, P = 200, delta = 0.1 and alpha = 0.05. We replicate the whole
 % experiment.
 
@@ -40,7 +40,7 @@ F = create_design(levels,1);
 X.N = size(F,1);
 X.M = 400;
 theta = 0.5;
-X.k = (theta/(1-theta))*[.1,.1,.1,.1]; 
+X.k = theta*[.2,.2,.2,.2]; 
 
 rep = 1000;
 
@@ -55,7 +55,7 @@ save ej2_0
 %% Absolute Population Curves (type 2) from variance coefficients. The design 
 % matrix F contains a full factorial design with four levels for A, three 
 % levels for B and four individuals in each cell of C(A). Other inputs are 
-% M = 400, kA = kB = kC(A) = kAB = 0.1*theta and kE = 1-theta, theta = 0, 
+% M = 400, kA = kB = kC(A) = kAB = 0.2*theta and kE = 1, theta = 0.5, 
 % R = 1000, P = 200, delta = 0.1 and alpha = 0.05. We replicate in factor A.
 
 clear
@@ -70,7 +70,7 @@ F = create_design(levels,1);
 X.N = size(F,1);
 X.M = 400;
 theta = 0.5;
-X.k = (theta/(1-theta))*[.1,.1,.1,.1]; 
+X.k = theta*[.2,.2,.2,.2]; 
 
 rep = 1000;
 
@@ -86,7 +86,7 @@ save ej2_1
 %% Absolute Population Curves (type 2) from variance coefficients. The design 
 % matrix F contains a full factorial design with four levels for A, three 
 % levels for B and four individuals in each cell of C(A). Other inputs are 
-% M = 400, kA = kB = kC(A) = kAB = 0.1*theta and kE = 1-theta, theta = 0, 
+% M = 400, kA = kB = kC(A) = kAB = 0.2*theta and kE = 1, theta = 0.5, 
 % R = 1000, P = 200, delta = 0.1 and alpha = 0.05. We replicate in factor B.
 
 clear
@@ -101,7 +101,7 @@ F = create_design(levels,1);
 X.N = size(F,1);
 X.M = 400;
 theta = 0.5;
-X.k = (theta/(1-theta))*[.1,.1,.1,.1]; 
+X.k = theta*[.2,.2,.2,.2]; 
 
 rep = 1000;
 
@@ -116,7 +116,7 @@ save ej2_2
 %% Absolute Population Curves (type 2) from variance coefficients. The design 
 % matrix F contains a full factorial design with four levels for A, three 
 % levels for B and four individuals in each cell of C(A). Other inputs are 
-% M = 400, kA = kB = kC(A) = kAB = 0.1*theta and kE = 1-theta, theta = 0.2, 
+% M = 400, kA = kB = kC(A) = kAB = 0.2*theta and kE = 1, theta = 0.5, 
 % R = 1000, P = 200, delta = 0.1 and alpha = 0.05. We replicate in factor C(A).
 
 clear
@@ -131,7 +131,7 @@ F = create_design(levels,1);
 X.N = size(F,1);
 X.M = 400;
 theta = 0.5;
-X.k = (theta/(1-theta))*[.1,.1,.1,.1]; 
+X.k = theta*[.2,.2,.2,.2]; 
 
 rep = 1000;
 
