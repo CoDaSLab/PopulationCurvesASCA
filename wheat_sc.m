@@ -103,7 +103,7 @@ Xs.k = [sqrt(max(MSA+MSE-MSAB-MSCA,0)/(MSE*5*5)),...
         sqrt(max(MSAB-MSE,0)/(MSE*5))];
     
 
-[PCmean,PCrep,struct] = powercurve(Xs,Fc, 'interaction', 2, [], [], @()1, 2:3, .05, 1, 200, 2, [], [], [], [1,3], 3);  
+[PCmean,PCrep,struct] = powercurve(Xs,Fc, 'interaction', 2, [], [], @()1, 3:3:15, .05, 1, 200, 2, [], [], [], [1,3], 3);  
 
 legend('Treatment-A','Time-B','Individual-C(A)','Int-AB') 
 saveas(gcf,'./Figures/APCW'); saveas(gcf,'./Figures/APCW.eps','epsc'); 
