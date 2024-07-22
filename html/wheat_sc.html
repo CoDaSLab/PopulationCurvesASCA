@@ -125,6 +125,8 @@ Ts.Source{5} = <span class="string">'Int-AB'</span>;
 
 disp(Ts)
 
+table2latex(Ts,<span class="string">'./Figures/TableW_3.tex'</span>)
+
 MSA = Ts{2,5};
 MSB = Ts{3,5};
 MSCA = Ts{4,5};
@@ -134,9 +136,9 @@ MSE = Ts{6,5};
     _________________    ______    _________    __    ______    ______    ________
     'Mean'                 1076    78.347        1      1076       NaN         NaN
     'Treatment-A'        82.898    6.0358        1    82.898    8.8359    0.001998
-    'Time-B'             74.641    5.4346        4     18.66    1.5795     0.22877
-    'Individual-C(A)'    27.801    2.0242        4    6.9501    1.7163     0.10889
-    'Int-AB'             47.255    3.4407        4    11.814    2.9173    0.004995
+    'Time-B'             74.641    5.4346        4     18.66    1.5795     0.20979
+    'Individual-C(A)'    27.801    2.0242        4    6.9501    1.7163    0.095904
+    'Int-AB'             47.255    3.4407        4    11.814    2.9173     0.00999
     'Residuals'          64.793    4.7176       16    4.0495       NaN         NaN
     'Total'              1373.4       100       30    45.781       NaN         NaN
 </pre><h2 id="3">APC from MSE estimates</h2><pre class="codeinput">Xs.N = size(Xc,1);
@@ -159,12 +161,14 @@ T.Source{4} = <span class="string">'Individual-C(A)'</span>;
 T.Source{5} = <span class="string">'Int-AB'</span>;
 
 disp(T)
+
+table2latex(T,<span class="string">'./Figures/TableW_15.tex'</span>)
 </pre><pre class="codeoutput">         Source          SumSq     PercSumSq    df     MeanSq      F        Pvalue 
     _________________    ______    _________    ___    ______    ______    ________
     'Mean'               5033.1    77.225         1    5033.1       NaN         NaN
     'Treatment-A'        388.96     5.968         1    388.96    36.218    0.000999
-    'Time-B'                376    5.7691         4    94.001    1.9808     0.14685
-    'Individual-C(A)'    153.84    2.3605        28    5.4944    1.6377    0.005994
+    'Time-B'                376    5.7691         4    94.001    1.9808     0.12887
+    'Individual-C(A)'    153.84    2.3605        28    5.4944    1.6377    0.002997
     'Int-AB'             189.82    2.9125         4    47.456    14.145    0.000999
     'Residuals'          375.75    5.7652       112    3.3549       NaN         NaN
     'Total'              6517.5       100       150     43.45       NaN         NaN
@@ -258,6 +262,8 @@ Ts.Source{5} = 'Int-AB';
 
 disp(Ts)
 
+table2latex(Ts,'./Figures/TableW_3.tex')
+
 MSA = Ts{2,5};
 MSB = Ts{3,5};
 MSCA = Ts{4,5};
@@ -280,6 +286,7 @@ Xs.k = [sqrt(max(MSA+MSE-MSAB-MSCA,0)/(MSE*5*5)),...
 legend('Treatment-A','Time-B','Individual-C(A)','Int-AB') 
 saveas(gcf,'./Figures/APCW'); saveas(gcf,'./Figures/APCW.eps','epsc'); 
 
+
 %% ASCA model: Full experimental matrix
 
 [T, parglmo] = parglm(X, F, 'interaction', 1, [], 2, [], [], [], [1 3]);
@@ -290,5 +297,7 @@ T.Source{4} = 'Individual-C(A)';
 T.Source{5} = 'Int-AB';
 
 disp(T)
+
+table2latex(T,'./Figures/TableW_15.tex')
 ##### SOURCE END #####
 --></body></html>

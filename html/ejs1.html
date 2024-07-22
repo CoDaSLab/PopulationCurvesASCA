@@ -242,12 +242,12 @@ saveas(gcf,<span class="string">'./Figures/SPC1_9'</span>); saveas(gcf,<span cla
 save <span class="string">ej1_9</span>
 </pre><img vspace="5" hspace="5" src="ejs1_12.png" alt=""> <h2 id="10">Draw expected F-ratio for the design matrix F containing a full</h2><p>factorial design with four levels for A, three levels for B and four individuals in each cell of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.2 and kE = 1, and delta = 0.1.</p><pre class="codeinput">theta = 0:0.1:0.9;
 
-EFA = 6*(1 + 0.19*(theta).^2)./(4*(1+0.03*(theta).^2) + 2*(1+0.04*(theta).^2));
-EFB = 1 + (0.16*theta.^2)./(1 + 0.04*theta.^2);
-EFCA = 1 + (0.03*theta.^2);
-EFAB = 1 + (0.04*theta.^2);
+EFA = 6*(1 + 0.76*(theta).^2)./(4*(1+0.12*(theta).^2) + 2*(1+0.16*(theta).^2));
+EFB = 1 + (0.64*theta.^2)./(1 + 0.16*theta.^2);
+EFCA = 1 + (0.12*theta.^2);
+EFAB = 1 + (0.16*theta.^2);
 
-EFA2 = 6*(1 + 0.07*(theta).^2)./(4*(1+0.03*(theta).^2) + 2*(1+0.04*(theta).^2));
+EFA2 = 6*(1 + 0.28*(theta).^2)./(4*(1+0.12*(theta).^2) + 2*(1+0.16*(theta).^2));
 EFB2 = ones(size(theta));
 
 comb = [EFA' EFB' EFCA' EFAB' EFA2' EFB2'];
@@ -503,12 +503,12 @@ save ej1_9
 
 theta = 0:0.1:0.9;
 
-EFA = 6*(1 + 0.19*(theta).^2)./(4*(1+0.03*(theta).^2) + 2*(1+0.04*(theta).^2));
-EFB = 1 + (0.16*theta.^2)./(1 + 0.04*theta.^2);
-EFCA = 1 + (0.03*theta.^2);
-EFAB = 1 + (0.04*theta.^2); 
+EFA = 6*(1 + 0.76*(theta).^2)./(4*(1+0.12*(theta).^2) + 2*(1+0.16*(theta).^2));
+EFB = 1 + (0.64*theta.^2)./(1 + 0.16*theta.^2);
+EFCA = 1 + (0.12*theta.^2);
+EFAB = 1 + (0.16*theta.^2); 
 
-EFA2 = 6*(1 + 0.07*(theta).^2)./(4*(1+0.03*(theta).^2) + 2*(1+0.04*(theta).^2));
+EFA2 = 6*(1 + 0.28*(theta).^2)./(4*(1+0.12*(theta).^2) + 2*(1+0.16*(theta).^2));
 EFB2 = ones(size(theta));
 
 comb = [EFA' EFB' EFCA' EFAB' EFA2' EFB2'];
