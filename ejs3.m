@@ -3,7 +3,7 @@
 % Smilde.
 %
 % coded by: Jose Camacho Paez (josecamacho@ugr.es)
-% last modification: 26/Feb/2024
+% last modification: 19/Jul/2024
 %
 % Copyright (C) 2024  University of Granada, Granada
 % 
@@ -23,8 +23,8 @@
 %% NULL distributions and ASCA table from data simulated with seed = 1. 
 % The design matrix F contains a full factorial design with 
 % four levels for A, three levels for B and four individuals in each cell 
-% of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.1*theta 
-% and kE = 1-theta, theta = 0, R = 1000, P = 200 and alpha = 0.05.
+% of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.2*theta 
+% and kE = 1, theta = 0.5, R = 1000, P = 200 and alpha = 0.05.
 
 clear
 close all
@@ -34,7 +34,7 @@ reps = 4;
 vars = 400;
 levels = {[1,2,3,4],[1,2,3],1:reps};
 theta = 0.5;
-k = [theta*[.1,.1,.1,.1], (1-theta)]; 
+k = [theta*[.2,.2,.2,.2], 1]; 
 
 F = create_design(levels,1);
 
@@ -80,9 +80,9 @@ table2latex(T,'./Figures/Table3_0.tex')
 %% NULL distributions and ASCA table from data simulated with seed = 1. 
 % The design matrix F contains a full factorial design with 
 % four levels for A, three levels for B and four individuals in each cell 
-% of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.1*theta 
-% and kE = 1-theta, theta = 0, R = 1000, P = 200 and alpha = 0.05. The 
-% whole experiment is duplicated.
+% of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.2*theta 
+% and kE = 1, theta = 0.5, R = 1000, P = 200 and alpha = 0.05. The 
+% whole experiment is increasingly duplicated.
 
 clear
 close all
@@ -92,7 +92,7 @@ reps = 4;
 vars = 400;
 levels = {[1,2,3,4],[1,2,3],1:reps};
 theta = 0.5;
-k = [theta*[.1,.1,.1,.1], (1-theta)]; 
+k = [theta*[.2,.2,.2,.2], 1]; 
 
 F = create_design(levels,1);
 F = [F;F];
@@ -139,9 +139,9 @@ table2latex(T,'./Figures/Table3_1.tex')
 %% NULL distributions and ASCA table from data simulated with seed = 1. 
 % The design matrix F contains a full factorial design with 
 % four levels for A, three levels for B and four individuals in each cell 
-% of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.1*theta 
-% and kE = 1-theta, theta = 0, R = 1000, P = 200 and alpha = 0.05. The 
-% number of levels of A, L_A, is duplicated.
+% of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.2*theta 
+% and kE = 1, theta = 0.5, R = 1000, P = 200 and alpha = 0.05. The 
+% number of levels of A, L_A, is increasingly duplicated.
 
 clear
 close all
@@ -151,7 +151,7 @@ reps = 4;
 vars = 400;
 levels = {1:8,[1,2,3],1:reps};
 theta = 0.5;
-k = [theta*[.1,.1,.1,.1], (1-theta)]; 
+k = [theta*[.2,.2,.2,.2], 1]; 
 
 F = create_design(levels,1);
 
@@ -197,9 +197,9 @@ table2latex(T,'./Figures/Table3_2.tex')
 %% NULL distributions and ASCA table from data simulated with seed = 1. 
 % The design matrix F contains a full factorial design with 
 % four levels for A, three levels for B and four individuals in each cell 
-% of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.1*theta 
-% and kE = 1-theta, theta = 0, R = 1000, P = 200 and alpha = 0.05. The 
-% number of levels of B, L_B, is duplicated.
+% of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.2*theta 
+% and kE = 1, theta = 0.5, R = 1000, P = 200 and alpha = 0.05. The 
+% number of levels of B, L_B, is increasingly duplicated.
 
 clear
 close all
@@ -209,7 +209,7 @@ reps = 4;
 vars = 400;
 levels = {[1,2,3,4],1:6,1:reps};
 theta = 0.5;
-k = [theta*[.1,.1,.1,.1], (1-theta)]; 
+k = [theta*[.2,.2,.2,.2], 1]; 
 
 F = create_design(levels,1);
 
@@ -255,9 +255,9 @@ table2latex(T,'./Figures/Table3_3.tex')
 %% NULL distributions and ASCA table from data simulated with seed = 1. 
 % The design matrix F contains a full factorial design with 
 % four levels for A, three levels for B and four individuals in each cell 
-% of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.1*theta 
-% and kE = 1-theta, theta = 0, R = 1000, P = 200 and alpha = 0.05. The 
-% number of replicates in C(A), r_{C(A)}, is triplicated.
+% of C(A). Other inputs are M = 400, kA = kB = kC(A) = kAB = 0.2*theta 
+% and kE = 1, theta = 0.5, R = 1000, P = 200 and alpha = 0.05. The 
+% number of replicates in C(A), r_{C(A)}, is increasingly duplicated.
 
 clear
 close all
@@ -267,7 +267,7 @@ reps = 8;
 vars = 400;
 levels = {[1,2,3,4],[1,2,3],1:reps};
 theta = 0.5;
-k = [theta*[.1,.1,.1,.1], (1-theta)]; 
+k = [theta*[.2,.2,.2,.2], 1]; 
 
 F = create_design(levels,1);
 

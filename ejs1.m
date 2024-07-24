@@ -4,7 +4,7 @@
 %
 % coded by: Jose Camacho Paez (josecamacho@ugr.es)
 %       Michael Sorochan Armstorng (mdarmstr@ugr.es)
-% last modification: 22/Feb/2024
+% last modification: 19/Jul/2024
 %
 % Copyright (C) 2024  University of Granada, Granada
 % 
@@ -24,7 +24,7 @@
 %% Relative Population Curves (type 1) from variance coefficients. The design 
 % matrix F contains a full factorial design with four levels for A, three 
 % levels for B and four individuals in each cell of C(A). Other inputs are 
-% M = 400, kA = kB = kC(A) = kAB = 0.1 and kE = 1, R = 1000, P = 200, 
+% M = 400, kA = kB = kC(A) = kAB = 0.2 and kE = 1, R = 1000, P = 200, 
 % delta = 0.1 and alpha = 0.05.
 
 clear
@@ -38,7 +38,7 @@ F = create_design(levels,1);
 
 X.N = size(F,1);
 X.M = 400;
-X.k = [.1,.1,.1,.1]; 
+X.k = [.2,.2,.2,.2]; 
 
 rep = 1000;
 
@@ -67,10 +67,10 @@ save ej1_1
 %% Relative Population Power Curves (type 1) from variance coefficients. The design 
 % matrix F contains a full factorial design with four levels for A, three 
 % levels for B and four individuals in each cell of C(A). Other inputs are 
-% M = 400, kB = kC(A) = kAB = 0.1, kA = 0 and kE = 1, R = 1000, P = 200, 
+% M = 400, kB = kC(A) = kAB = 0.2, kA = 0 and kE = 1, R = 1000, P = 200, 
 % delta = 0.1 and alpha = 0.05.
 
-X.k = [0,.1,.1,.1];
+X.k = [0,.2,.2,.2];
 
 % Power curves
 [PCmean,PCrep,struct] = powercurve(X,F,{[1 2]},1,rep,[],@()1,[],.05,1,200,2,[],[],[],[1 3]); 
@@ -96,10 +96,10 @@ save ej1_2
 %% Relative Population Power Curves (type 1) from variance coefficients. The design 
 % matrix F contains a full factorial design with four levels for A, three 
 % levels for B and four individuals in each cell of C(A). Other inputs are 
-% M = 400, kA = kC(A) = kAB = 0.1, kB = 0 and kE = 1, R = 1000, P = 200, 
+% M = 400, kA = kC(A) = kAB = 0.2, kB = 0 and kE = 1, R = 1000, P = 200, 
 % delta = 0.1 and alpha = 0.05.
 
-X.k = [.1,0,.1,.1];
+X.k = [.2,0,.2,.2];
 
 % Power curves
 [PCmean,PCrep,struct] = powercurve(X,F,{[1 2]},1,rep,[],@()1,[],.05,1,200,2,[],[],[],[1 3]);  
@@ -127,10 +127,10 @@ save ej1_3
 %% Relative Population Power Curves (type 1) from variance coefficients. The design 
 % matrix F contains a full factorial design with four levels for A, three 
 % levels for B and four individuals in each cell of C(A). Other inputs are 
-% M = 400, kA = kB = kAB = 0.1, kC(A) = 0 and kE = 1, R = 1000, P = 200, 
+% M = 400, kA = kB = kAB = 0.2, kC(A) = 0 and kE = 1, R = 1000, P = 200, 
 % delta = 0.1 and alpha = 0.05.
 
-X.k = [.1,.1,0,.1];
+X.k = [.2,.2,0,.2];
 
 % Power curves
 [PCmean,PCrep] = powercurve(X,F,{[1 2]},1,rep,[],@()1,[],.05,1,200,2,[],[],[],[1 3]);  
@@ -143,10 +143,10 @@ save ej1_4
 %% Relative Population Power Curves (type 1) from variance coefficients. The design 
 % matrix F contains a full factorial design with four levels for A, three 
 % levels for B and four individuals in each cell of C(A). Other inputs are 
-% M = 400, kA = kB = kC(A) = 0.1, kAB = 0 and kE = 1, R = 1000, P = 200, 
+% M = 400, kA = kB = kC(A) = 0.2, kAB = 0 and kE = 1, R = 1000, P = 200, 
 % delta = 0.1 and alpha = 0.05.
 
-X.k = [.1,.1,.1,0];
+X.k = [.2,.2,.2,0];
 
 % Power curves
 [PCmean,PCrep] = powercurve(X,F,{[1 2]},1,rep,[],@()1,[],.05,1,200,2,[],[],[],[1 3]);  
@@ -159,10 +159,10 @@ save ej1_5
 %% Relative Population Power Curves (type 1) from variance coefficients. The design 
 % matrix F contains a full factorial design with four levels for A, three 
 % levels for B and four individuals in each cell of C(A). Other inputs are 
-% M = 400, kA = kB = 0.1, kAB = kC(A) = 0 and kE = 1, R = 1000, P = 200, 
+% M = 400, kA = kB = 0.2, kAB = kC(A) = 0 and kE = 1, R = 1000, P = 200, 
 % delta = 0.1 and alpha = 0.05.
 
-X.k = [.1,.1,0,0];
+X.k = [.2,.2,0,0];
 
 % Power curves
 [PCmean,PCrep] = powercurve(X,F,{[1 2]},1,rep,[],@()1,[],.05,1,200,2,[],[],[],[1 3]);  
@@ -175,10 +175,10 @@ save ej1_6
 %% Relative Population Power Curves (type 1) from variance coefficients. The design 
 % matrix F contains a full factorial design with four levels for A, three 
 % levels for B and four individuals in each cell of C(A). Other inputs are 
-% M = 400, kB = kAB = 0.1, kA = kC(A) = 0 and kE = 1, R = 1000, P = 200, 
+% M = 400, kB = kAB = 0.2, kA = kC(A) = 0 and kE = 1, R = 1000, P = 200, 
 % delta = 0.1 and alpha = 0.05.
 
-X.k = [0,.1,0,.1];
+X.k = [0,.2,0,.2];
 
 % Power curves
 [PCmean,PCrep] = powercurve(X,F,{[1 2]},1,rep,[],@()1,[],.05,1,200,2,[],[],[],[1 3]);  
@@ -191,10 +191,10 @@ save ej1_7
 %% Relative Population Power Curves (type 1) from variance coefficients. The design 
 % matrix F contains a full factorial design with four levels for A, three 
 % levels for B and four individuals in each cell of C(A). Other inputs are 
-% M = 400, kB = kC(A) = 0.1, kA = kAB  = 0 and kE = 1, R = 1000, P = 200, 
+% M = 400, kB = kC(A) = 0.2, kA = kAB  = 0 and kE = 1, R = 1000, P = 200, 
 % delta = 0.1 and alpha = 0.05.
 
-X.k = [0,.1,.1,0];
+X.k = [0,.2,.2,0];
 
 % Power curves
 [PCmean,PCrep] = powercurve(X,F,{[1 2]},1,rep,[],@()1,[],.05,1,200,2,[],[],[],[1 3]);  
@@ -206,7 +206,7 @@ save ej1_8
 
 %% Relative Population Curves (type 1) from variance coefficients. The design 
 % matrix F contains a full factorial design with four levels for A and three 
-% levels. Other inputs are M = 400, kB = kAB = 0.1, kA = 0 and kE = 1, 
+% levels. Other inputs are M = 400, kB = kAB = 0.2, kA = 0 and kE = 1, 
 % R = 1000, P = 200, delta = 0.1 and alpha = 0.05.
 
 clear
@@ -220,7 +220,7 @@ F = create_design(levels(:,1:2),4);
 
 X.N = size(F,1);
 X.M = 400;
-X.k = [0,.1,.1]; 
+X.k = [0,.2,.2]; 
 
 rep = 1000;
 
@@ -234,16 +234,16 @@ save ej1_9
 %% Draw expected F-ratio for the design matrix F containing a full 
 % factorial design with four levels for A, three levels for B and four 
 % individuals in each cell of C(A). Other inputs are M = 400, 
-% kA = kB = kC(A) = kAB = 0.1 and kE = 1, and delta = 0.1.
+% kA = kB = kC(A) = kAB = 0.2 and kE = 1, and delta = 0.1.
 
 theta = 0:0.1:0.9;
 
-EFA = 6*((1-theta).^2 + 0.19*(theta).^2)./(4*((1-theta).^2+0.03*(theta).^2) + 2*((1-theta).^2+0.04*(theta).^2));
-EFB = 1 + (0.16*theta.^2)./((1-theta).^2 + 0.04*theta.^2);
-EFCA = 1 + (0.03*theta.^2)./((1-theta).^2);
-EFAB = 1 + (0.04*theta.^2)./((1-theta).^2); 
+EFA = 6*(1 + 0.76*(theta).^2)./(4*(1+0.12*(theta).^2) + 2*(1+0.16*(theta).^2));
+EFB = 1 + (0.64*theta.^2)./(1 + 0.16*theta.^2);
+EFCA = 1 + (0.12*theta.^2);
+EFAB = 1 + (0.16*theta.^2); 
 
-EFA2 = 6*((1-theta).^2 + 0.07*(theta).^2)./(4*((1-theta).^2+0.03*(theta).^2) + 2*((1-theta).^2+0.04*(theta).^2));
+EFA2 = 6*(1 + 0.28*(theta).^2)./(4*(1+0.12*(theta).^2) + 2*(1+0.16*(theta).^2));
 EFB2 = ones(size(theta));
 
 comb = [EFA' EFB' EFCA' EFAB' EFA2' EFB2'];
